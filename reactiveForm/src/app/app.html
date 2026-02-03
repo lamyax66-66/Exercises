@@ -1,27 +1,103 @@
- <div class="collapse collapse-arrow bg-base-200">
-  <input type="radio" name="my-accordion-2" checked="checked" /> 
-  <div class="collapse-title text-xl font-medium">
-    Click to open this one and close others
-  </div>
-  <div class="collapse-content"> 
-    <p>hello</p>
-  </div>
-</div>
-<div class="collapse collapse-arrow bg-base-200">
-  <input type="radio" name="my-accordion-2" /> 
-  <div class="collapse-title text-xl font-medium">
-    Click to open this one and close others
-  </div>
-  <div class="collapse-content"> 
-    <p>hello</p>
-  </div>
-</div>
-<div class="collapse collapse-arrow bg-base-200">
-  <input type="radio" name="my-accordion-2" /> 
-  <div class="collapse-title text-xl font-medium">
-    Click to open this one and close others
-  </div>
-  <div class="collapse-content"> 
-    <p>hello</p>
+<div class="min-h-screen flex items-center justify-center bg-[#0f172a]">
+  <div class="card w-full max-w-md bg-base-100 shadow-xl">
+    <div class="card-body">
+      <form [formGroup]="userForm" class="space-y-4">
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Full Name</span>
+          </label>
+          <input type="text" class="input input-bordered"formControlName="FullName"/>
+          @if (userForm.controls['FullName'].touched) {
+            @if(userForm.controls["FullName"].errors?.['required']){
+              <span class="text-error text-sm">
+                This is required</span>
+            }
+            @if(userForm.controls["FullName"].errors?.['minlength']){
+               <span class="text-error text-sm">
+              Name must be at least 3 characters
+            </span>
+            }
+          }
+        </div>
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input type="email" class="input input-bordered" formControlName="Email"/>
+          @if (userForm.controls['Email'].touched) {
+            @if(userForm.controls["Email"].errors?.['required']){
+              <span class="text-error text-sm">
+                This is required</span>
+            }
+            @if(userForm.controls["Email"].errors?.['email']){
+               <span class="text-error text-sm">
+                Please enter a valid email
+            </span>
+            }
+          }
+        </div>
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Password</span>
+          </label>
+          <input type="password" class="input input-bordered" formControlName="Password"/>
+          @if (userForm.controls['Password'].touched) {
+            @if(userForm.controls["Password"].errors?.['required']){
+              <span class="text-error text-sm">
+                This is required</span>
+            }
+            @if(userForm.controls["Password"].errors?.['minlength']){
+               <span class="text-error text-sm">
+                Password must be at least 8 characters
+            </span>
+            }
+          }
+        </div>
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Age</span>
+          </label>
+          <input type="number" class="input input-bordered" formControlName="Age"/>
+          @if (userForm.controls['Age'].touched) {
+            @if(userForm.controls["Age"].errors?.['required']){
+              <span class="text-error text-sm">
+                This is required</span>
+            }
+            @if(userForm.controls["Age"].errors?.['min']){
+               <span class="text-error text-sm">
+              Age must be 18 or above
+            </span>
+            }
+          }
+        </div>
+
+        <div class="form-control">
+          <label class="label cursor-pointer justify-start gap-3">
+            <input type="checkbox" class="checkbox checkbox-primary" formControlName="acceptTerms"/>
+            <span class="label-text">
+              I accept the terms & conditions
+            </span>
+          </label>
+
+          @if (userForm.controls['acceptTerms'].touched) {
+            @if(userForm.controls["acceptTerms"].errors?.['requiredTrue']){
+              <span class="text-error text-sm">
+                You must accept the terms</span>
+            }
+          }
+        </div>
+
+        <div class="form-control mt-6">
+          <button type="submit" class="btn btn-primary w-full" (click)="onSubmit()" [disabled]="userForm.invalid">
+            Submit
+          </button>
+        </div>
+
+      </form>
+    </div>
   </div>
 </div>
