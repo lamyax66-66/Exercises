@@ -1,0 +1,97 @@
+<div class="min-h-screen flex items-center justify-center bg-[#0f172a]">
+  <div class="card w-full max-w-md bg-base-100 shadow-xl">
+    <div class="card-body">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="space-y-4">
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Full Name</span>
+          </label>
+          <input type="text" class="input input-bordered" formControlName="fullName" />
+          @if (userForm.controls['fullName'].touched) {
+          @if(userForm.controls["fullName"].errors?.['required']){
+          <span class="text-error text-sm">
+            FullName is required
+          </span>
+          }
+          @if(userForm.controls["fullName"].errors?.['minlength']){
+          <span class="text-error text-sm">
+            Name must be at least 3 characters
+          </span>
+          
+          }
+          }
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input type="email" class="input input-bordered" formControlName="email" />
+          @if (userForm.controls['email'].touched) {
+          @if(userForm.controls["email"].errors?.['required']){
+          <span class="text-error text-sm">
+            Email is required</span>
+          }
+          @if(userForm.controls["email"].errors?.['email']){
+          <span class="text-error text-sm">
+            Please enter a valid email
+          </span>
+          }
+          }
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Password</span>
+          </label>
+          <input type="password" class="input input-bordered" formControlName="password" />
+          @if (userForm.controls['password'].touched) {
+          @if(userForm.controls["password"].errors?.['required']){
+          <span class="text-error text-sm">
+            Password is required</span>
+          }
+          @if(userForm.controls["password"].errors?.['minlength']){
+          <span class="text-error text-sm">
+            Password must be at least 8 characters
+          </span>
+          }
+          }
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Age</span>
+          </label>
+          <input type="number" class="input input-bordered" formControlName="age" />
+          @if (userForm.controls['age'].touched) {
+          @if(userForm.controls["age"].errors?.['required']){
+          <span class="text-error text-sm">
+            Age is required</span>
+          }
+          @if(userForm.controls["age"].errors?.['min']){
+          <span class="text-error text-sm">
+            Age must be 18 or above
+          </span>
+          }
+          }
+        </div>
+        <div class="form-control">
+          <label class="label cursor-pointer justify-start gap-3">
+            <input type="checkbox" class="checkbox checkbox-primary" formControlName="acceptTerms" />
+            <span class="label-text">
+              I accept the terms & conditions
+            </span>
+          </label>
+          @if (userForm.controls['acceptTerms'].touched) {
+          @if(userForm.controls["acceptTerms"].errors?.['required']){
+          <span class="text-error text-sm">
+            You must accept the terms</span>
+          }
+          }
+        </div>
+        <div class="form-control mt-6">
+          <button type="submit" class="btn btn-primary w-full" [disabled]="userForm.invalid">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
