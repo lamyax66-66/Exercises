@@ -1,32 +1,24 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Status } from '../../enums/status.enum';
 
 @Pipe({
   name: 'statusLabel',
 })
-export class StatusLabelPipe implements PipeTransform {
+export class StatusLabelPipe implements PipeTransform{
 
-   transform(value: string | number | null | undefined): string {
-
-     if(value === null || value === "" || value === undefined)
-      return "Unknown";
+   transform(value: Status): string {
 
     switch (value) {
-      case 0:
-      case "0":
+      case Status.INACTIVE:
         return "Inactive";
-      case 1:
-      case "1":
+      case Status.ACTIVE:
         return "Active";
-      case 2:
-      case "2":
+      case Status.PENDING:
         return "Pending";
-      case 3:
-      case "3":
+      case Status.SUSPENDED:
         return "Suspended";
       default:
-        return "unknown";
-
+        return "unknown status";
     }
   }
-
 }
