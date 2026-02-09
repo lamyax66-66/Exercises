@@ -5,20 +5,21 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class MaskPipe implements PipeTransform {
   
-  transform(value: string | number | null | undefined, visableCount: number, maskChar: string = "*"): string {
+  transform(value: string | number | null | undefined, visibleCount: number, maskChar: string = "*"): string {
 
-    if (value == null || value == "" || value == undefined)
+    if (value == null || value == "")
       return "";
 
     const stringValue = value.toString();
     const stringLength = stringValue.length;
 
-    if (visableCount >= stringLength)
+    if (visibleCount >= stringLength)
       return stringValue;
     else {
-      const maskedLength = stringLength - visableCount;
+      visibleCount = Math.max(0, visibleCount)
+      const maskedLength = stringLength - visibleCount;
       const maskedPart = maskChar.repeat(maskedLength);
-      const visablepart = stringValue.slice(-visableCount);
+      const visablepart = stringValue.slice(-visibleCount);
       return maskedPart + visablepart;
     }
 

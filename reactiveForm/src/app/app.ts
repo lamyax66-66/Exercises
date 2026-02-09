@@ -12,8 +12,8 @@ export class App {
 
   text ="123456789";
   num = 123456789;
-  undefined= undefined;
-  null= null ;
+  testUndefined = undefined;
+  testNull = null ;
   empty="";
 
 }
