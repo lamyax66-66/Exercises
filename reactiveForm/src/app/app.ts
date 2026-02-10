@@ -1,9 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { MaskPipe } from './pipes/mask/mask-pipe';
+import { StatusLabelPipe } from './pipes/statusLabel/status-label-pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [MaskPipe],
+  imports: [MaskPipe,StatusLabelPipe],
+
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -16,4 +18,6 @@ export class App {
   testNull = null ;
   empty="";
 
+  test1= 0
+  test2=2
 }
