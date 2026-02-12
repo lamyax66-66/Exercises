@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { MaskPipe } from './pipes/mask/mask-pipe';
-import { StatusLabelPipe } from './pipes/statusLabel/status-label-pipe';
+import { Toggle } from './Exer4/toggle/toggle';
 
 @Component({
   selector: 'app-root',
-  imports: [MaskPipe,StatusLabelPipe],
+  imports: [Toggle],
 
   templateUrl: './app.html',
   styleUrl: './app.css'
@@ -12,12 +11,23 @@ import { StatusLabelPipe } from './pipes/statusLabel/status-label-pipe';
 export class App {
   protected readonly title = signal('reactiveForm');
 
-  text ="123456789";
-  num = 123456789;
-  testUndefined = undefined;
-  testNull = null ;
-  empty="";
+  isDark = signal<boolean>(true);
+  notificationsOn = signal<boolean>(false);
 
-  test1= 0
-  test2=2
+  onToggleChanged(value: boolean) {
+    this.isDark.set(value);
+    console.log(value);
+  }
+
+  onNotificationsToggled(value: boolean) {
+    this.notificationsOn.set(value);
+
+    if (value) {
+      alert('Notifications Enabled ✅');
+    } else {
+      alert('Notifications Disabled ❌');
+    }
+  }
+
+
 }
