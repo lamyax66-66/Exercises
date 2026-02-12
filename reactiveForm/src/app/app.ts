@@ -12,15 +12,15 @@ export class App {
   protected readonly title = signal('reactiveForm');
 
   isDark = signal<boolean>(true);
-  notificationsOn = signal<boolean>(false);
+  isNotificationsOn = signal<boolean>(false);
 
-  onToggleChanged(value: boolean) {
+  onDarkModeToggle(value: boolean) {
     this.isDark.set(value);
     console.log(value);
   }
 
   onNotificationsToggled(value: boolean) {
-    this.notificationsOn.set(value);
+    this.isNotificationsOn.set(value);
 
     if (value) {
       alert('Notifications Enabled ✅');

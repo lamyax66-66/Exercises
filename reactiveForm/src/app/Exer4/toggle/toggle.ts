@@ -15,9 +15,10 @@ export class Toggle {
 
   isOn = signal<boolean>(this.initialOn());
 
-  onToggle(event: Event) {
-    const checked = (event.target as HTMLInputElement).checked;
-    this.isOn.set(checked);
-    this.toggled.emit(checked);
+  onToggle(): void {
+    if (this.disabled()) return;
+
+    this.isOn.update(value => !value);
+    this.toggled.emit(this.isOn());
   }
 }
