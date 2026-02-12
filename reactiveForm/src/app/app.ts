@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { Toggle } from './Exer4/toggle/toggle';
+import { Card } from './Exer5/card/card';
 
 @Component({
   selector: 'app-root',
-  imports: [Toggle],
+  imports: [Toggle ,Card],
 
   templateUrl: './app.html',
   styleUrl: './app.css'
@@ -30,4 +31,5 @@ export class App {
   }
 
 
+ 
 }
