@@ -1,17 +1,13 @@
-<p>{{ text | mask:4}}</p>
-<p>{{ text | mask:5:"#"}}</p>
-
-
-<p>{{ num | mask:5}}</p>
-<p>{{ num | mask:3:"$"}}</p>
-
-<p>{{ testUndefined | mask:6}}</p>
-
-<p>{{ testNull | mask:5}}</p>
-
-<p>{{ empty | mask:2}}</p>
-
-
-
-<p>{{ test1 | statusLabel}}</p>
-<p>{{ test2 | statusLabel}}</p>
+<div class="min-h-screen p-4" [attr.data-theme]="isDark() ? 'dark' : 'light'">
+    <div class="min-h-screen flex justify-center items-center">
+        <div class="card w-3/4 h-1/2 bg-base-100 shadow-xl">
+            <h3 class="text-5xl font-bold">Preferences</h3>
+            <app-toggle [label]="'Dark Mode'" [initialOn]="isDark()" [disabled]="false"
+                (toggled)="onDarkModeToggle($event)" />
+            <app-toggle [label]="'Notifications'" [initialOn]="isNotificationsOn()" [disabled]="false"
+                (toggled)="onNotificationsToggled($event)" />
+             <app-toggle [label]="'disabled'" [initialOn]="isNotificationsOn()" [disabled]="true"
+                (toggled)="onNotificationsToggled($event)" />
+        </div>
+    </div>
+</div>
