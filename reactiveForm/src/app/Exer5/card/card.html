@@ -1,0 +1,13 @@
+<div class="min-h-screen flex justify-center items-center">
+    <div class="card w-96 glass">
+        <figure>
+        <ng-content select="[image]"></ng-content></figure>
+        <div class="card-body">
+            <ng-content select="[header]"class="card-title"></ng-content>
+            <ng-content select="[body]"></ng-content>
+            <div class="card-actions justify-end">
+                <ng-content select="[footer]"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>
