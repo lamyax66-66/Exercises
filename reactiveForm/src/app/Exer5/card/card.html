@@ -1,12 +1,12 @@
 <div class="min-h-screen flex justify-center items-center">
     <div class="card w-96 glass">
-        <figure><img src="https://tse3.mm.bing.net/th/id/OIP.makE9VuVYBlwaik4yCGHzgHaGm?rs=1&pid=ImgDetMain&o=7&rm=3"
-                alt="car!" /></figure>
+        <figure>
+        <ng-content select="[image]"></ng-content></figure>
         <div class="card-body">
-            <ng-content [Header] class="card-title"></ng-content>
-            <ng-content [Body]></ng-content>
+            <ng-content select="[header]"class="card-title"></ng-content>
+            <ng-content select="[body]"></ng-content>
             <div class="card-actions justify-end">
-                <ng-content [Footer]></ng-content>
+                <ng-content select="[footer]"></ng-content>
             </div>
         </div>
     </div>
