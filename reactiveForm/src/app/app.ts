@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { MaskPipe } from './pipes/mask/mask-pipe';
 import { StatusLabelPipe } from './pipes/statusLabel/status-label-pipe';
+import { Todos } from "./Exer6/todos/todos";
 
 @Component({
   selector: 'app-root',
-  imports: [MaskPipe,StatusLabelPipe],
+  imports: [MaskPipe, StatusLabelPipe, Todos],
 
   templateUrl: './app.html',
   styleUrl: './app.css'
