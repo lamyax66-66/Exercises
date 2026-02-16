@@ -1,8 +1,6 @@
+@let todos = ( todosList$ | async) ?? [];
 <h2>Todo List</h2>
-@if (errorMessage) {
-<p style="color:red">{{ errorMessage }}</p>
-}
-@if (todosList$ | async; as todos) {
+@if (todos) {
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -17,9 +15,15 @@
             <td>{{ todo.id }}</td>
             <td>{{ todo.title }}</td>
             <td>
-                {{ todo.completed ? 'Completed' : 'Pending' }}
+                {{ todo.completed }}
             </td>
         </tr>
+        }@empty {
+        @if (errorMessage) {
+        <p class="text-red-700 ">{{ errorMessage }}</p>
+        } @else {
+        <p class="text-xl p-4 text-center">No data</p>
+        }
         }
     </tbody>
 </table>

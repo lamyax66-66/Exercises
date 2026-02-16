@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FetchTodos } from './fetch-todos';
+import { ToDoService } from './fetch-todos';
 
 describe('FetchTodos', () => {
-  let service: FetchTodos;
+  let service: ToDoService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FetchTodos);
+    service = TestBed.inject(ToDoService);
   });
 
   it('should be created', () => {

@@ -5,7 +5,6 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
   selector: 'app-reactive-form',
   imports: [ReactiveFormsModule],
   templateUrl: './reactive-form.html',
-  styleUrl: './reactive-form.css',
 })
 export class ReactiveForm {
 
